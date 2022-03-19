@@ -4,39 +4,51 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:KaiYan.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Windows10version1809="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:Windows10version1809="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)" 
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     d:DesignHeight="50"
-    d:DesignWidth="400">
+    d:DesignWidth="400"
+    VerticalAlignment="Stretch"
+    HorizontalAlignment="Stretch"
+    >
 
-    <Grid Name="Root_Grid" >
-        <Grid x:Name="Child_Grid">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="Item_Tapped" DoubleTapped="Item_DoubleTapped" Margin="5" Background="Transparent">
-                <TextBlock Text="推荐" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            </Border>
-            <Border  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Tapped="Item_Tapped" DoubleTapped="Item_DoubleTapped" Margin="5" Background="Transparent">
-                <TextBlock Text="分类" HorizontalAlignment="Center" VerticalAlignment="Center"  />
-            </Border>
-            <Border Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="Item_Tapped" DoubleTapped="Item_DoubleTapped" Margin="5" Background="Transparent">
-                <TextBlock Text="社区" HorizontalAlignment="Center" VerticalAlignment="Center"  />
-            </Border>
-            <Border Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="Item_Tapped" DoubleTapped="Item_DoubleTapped" Margin="5" Background="Transparent">
-                <TextBlock Text="我的" HorizontalAlignment="Center" VerticalAlignment="Center"  />
-            </Border>
-        </Grid>
+    <controls:DropShadowPanel BlurRadius="11" ShadowOpacity="0.7" HorizontalAlignment="Stretch"
+                                  OffsetX="0"  
+                                  OffsetY="0"   
+                                  Color="{ThemeResource SystemColorWindowTextColor}" >
 
-        <Border x:Name="slider" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50" Height="5" 
+
+        <Grid Name="Root_Grid"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  HorizontalAlignment="Stretch" >
+            <Grid x:Name="Child_Grid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="Item_Tapped" DoubleTapped="Item_DoubleTapped" Margin="5" Background="Transparent">
+                    <TextBlock Text="推荐" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+                <Border  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Tapped="Item_Tapped" DoubleTapped="Item_DoubleTapped" Margin="5" Background="Transparent">
+                    <TextBlock Text="分类" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                </Border>
+                <Border Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="Item_Tapped" DoubleTapped="Item_DoubleTapped" Margin="5" Background="Transparent">
+                    <TextBlock Text="社区" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                </Border>
+                <Border Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="Item_Tapped" DoubleTapped="Item_DoubleTapped" Margin="5" Background="Transparent">
+                    <TextBlock Text="我的" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                </Border>
+            </Grid>
+
+            <Border x:Name="slider" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50" Height="5" 
                 RenderTransformOrigin="0.5,0.5"
                 Background="{ThemeResource SystemAccentColor}" CornerRadius="5" Margin="0,0,0,5">
-            <Border.RenderTransform>
-                <TranslateTransform x:Name="sliderTranslateTransform" X="27"/>
-            </Border.RenderTransform>
-        </Border>
-    </Grid>
+                <Border.RenderTransform>
+                    <TranslateTransform x:Name="sliderTranslateTransform" X="27"/>
+                </Border.RenderTransform>
+            </Border>
+        </Grid>
+    </controls:DropShadowPanel>
 </UserControl>

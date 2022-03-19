@@ -118,7 +118,7 @@ namespace KaiYan.Pages
             else
                 flipView.Visibility = Visibility.Collapsed;
         }
-        private DisplayRequest appDisplayRequest = null;
+      
         private void unload()
         {
           
@@ -135,8 +135,6 @@ namespace KaiYan.Pages
                         ((MediaPlaybackItem)source).Source.Dispose();
                 });
             }
-            appDisplayRequest?.RequestRelease();
-            appDisplayRequest = null;
             
         }
 
@@ -215,19 +213,14 @@ namespace KaiYan.Pages
         {
             if(MediaPlayer.Source == null)
                 setPlayUrl();
-            if (appDisplayRequest == null)
-            {
-                appDisplayRequest = new DisplayRequest();
-                appDisplayRequest.RequestActive();
-            }
+
             if (lastPlaying)
                 MediaPlayer.Play();
         }
 
         public void LostViewFocus()
         {
-            appDisplayRequest?.RequestRelease();
-            appDisplayRequest = null;
+        
             lastPlaying = MediaPlayer.PlaybackSession.PlaybackState == MediaPlaybackState.Playing;
             MediaPlayer.Pause();
         }

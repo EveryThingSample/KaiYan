@@ -41,7 +41,7 @@ namespace KaiYan.Pages
         }
 
 
-        private DisplayRequest appDisplayRequest = null;
+
         VideoResource videoResource;
 
         public Uri BlurredCoverUri { get => (Uri)GetValue(BlurredCoverUriProperty); set { SetValue(BlurredCoverUriProperty, value); } }
@@ -158,8 +158,7 @@ namespace KaiYan.Pages
                         ((MediaPlaybackItem)source).Source.Dispose();
                 });
             }
-            appDisplayRequest?.RequestRelease();
-            appDisplayRequest = null;
+
             relatedFrame.Navigate(typeof(Page), null, new Windows.UI.Xaml.Media.Animation.SuppressNavigationTransitionInfo());
             replyFrame.Navigate(typeof(Page), null, new Windows.UI.Xaml.Media.Animation.SuppressNavigationTransitionInfo());
         }
@@ -247,19 +246,13 @@ namespace KaiYan.Pages
                 if (isLastTimePlaying)
                     mediaPlayer.Play();
             }
-            if (appDisplayRequest == null)
-            {
-                appDisplayRequest = new DisplayRequest();
-                appDisplayRequest.RequestActive();
-            }
+
            
             
             
         }
         public void LostViewFocus()
         {
-            appDisplayRequest?.RequestRelease();
-            appDisplayRequest = null;
             isViewCurrent = false;
             Task.Run(() => {
                 isLastTimePlaying = mediaPlayer.PlaybackSession.PlaybackState == MediaPlaybackState.Playing;

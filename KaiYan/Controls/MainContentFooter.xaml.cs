@@ -42,7 +42,10 @@ namespace KaiYan.Controls
             Storyboard.SetTargetProperty(sliderTranslateTransformXDoubleAnimation, "X");
             storyboard.Children.Add(sliderTranslateTransformXDoubleAnimation);
             this.SizeChanged += MainContentFooter_SizeChanged;
+            Root_Grid.SizeChanged += Root_Grid_SizeChanged;
         }
+
+      
 
         public int SelectedIndex { get => (int)GetValue(SelectedIndexProperty); set { SetValue(SelectedIndexProperty, value); } }
         public static DependencyProperty SelectedIndexProperty { get; } = DependencyProperty.Register("SelectedIndex", typeof(int), typeof(MainContentFooter), new PropertyMetadata(-1, new PropertyChangedCallback(SelectedIndexPropertyChanged)));
@@ -83,10 +86,15 @@ namespace KaiYan.Controls
             if (SelectedIndex != index)
                 SelectedIndex = index;
         }
-
-        private void MainContentFooter_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void Root_Grid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             changeSelectIndex(SelectedIndex);
+        }
+        private void MainContentFooter_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Root_Grid.Width = e.NewSize.Width;
+            Root_Grid.Height = e.NewSize.Height;
+
         }
         private void changeSelectIndex(int i)
         {
@@ -97,7 +105,7 @@ namespace KaiYan.Controls
             else
             {
                 var element = Child_Grid.Children[i] as FrameworkElement;
-                Rect elementBounds = element.TransformToVisual(this).TransformBounds(new Rect(0.0, 0.0, element.ActualWidth, element.ActualHeight));
+                Rect elementBounds = element.TransformToVisual(Root_Grid).TransformBounds(new Rect(0.0, 0.0, element.ActualWidth, element.ActualHeight));
 
                 var x = (elementBounds.Left + elementBounds.Right) / 2;
                 sliderTranslateTransformX(x - slider.ActualWidth / 2);
@@ -145,6 +153,7 @@ namespace KaiYan.Controls
             changeSelectIndex(newValue);
             SelectionChanged?.Invoke(this, new SelectionChangedEventArgs(new object[] { oldValue }, new object[] { newValue }));
         }
+
 
     }
 }

@@ -97,11 +97,15 @@ namespace KaiYan.Controls
         }
         private async void setLeftMaskImage()
         {
+            leftContentImage.Opacity = 0;
             leftContentImage.Source = await EveryThingSampleTools.WP.Tools.SaveImageTools.GetImageSourceAsync(LeftContentContainer);
+            leftContentImage.Opacity = 1;
         }
         private async void setRightMaskImage()
         {
+            rightContentImage.Opacity = 0;
             rightContentImage.Source = await EveryThingSampleTools.WP.Tools.SaveImageTools.GetImageSourceAsync(RightContentContainer);
+            rightContentImage.Opacity = 1;
         }
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {

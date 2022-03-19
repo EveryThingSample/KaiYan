@@ -40,10 +40,7 @@ namespace KaiYan.Core.Page
                 if (itemList.Length > 0)
                 {
                     url = jobject.GetValue("nextPageUrl").ToString();
-                    if (url?.StartsWith("http://baobab.kaiyanapp.com/api/v5/index/tab/category/") == true)
-                    {
-                        url = url.Replace("http://baobab.kaiyanapp.com/api/v5/index/tab/category/", "https://baobab.kaiyanapp.com/api/v5/index/tab//category/");
-                    }
+                    
                     foreach (var item in jobject.GetValue("itemList"))
                     {
                         var _cardItem = CardItemFactory.GetCardItem(item.ToObject<JObject>());

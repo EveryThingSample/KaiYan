@@ -39,6 +39,8 @@ namespace KaiYan.Core.Page.Card
                         url = Uri.UnescapeDataString(url);
                         if (url.Contains("/pgcs/videoList"))
                             return new PageTool("", url);
+                        else if (url.Contains("://baobab.kaiyanapp.com/api"))
+                            return new TabListTool(url);
                         else
                             Launcher.LaunchUriAsync(new Uri(url));
                         break;

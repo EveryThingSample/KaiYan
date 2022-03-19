@@ -4,13 +4,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:KaiYan.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Windows10version1809="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)" xmlns:controls="using:EveryThingSampleTools.WP.UI.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:Windows10version1809="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
+    xmlns:controls="using:EveryThingSampleTools.WP.UI.Controls"
+    xmlns:media="using:Windows.UI.Xaml.Media"
+    xmlns:media2="using:Microsoft.Toolkit.Uwp.UI.Media" xmlns:Windows10FallCreatorsUpdate="using:Windows.UI.Xaml.Media?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
     SizeChanged="UserControl_SizeChanged"
     >
-
+    <UserControl.Resources>
+        <Windows10FallCreatorsUpdate:AcrylicBrush x:Key="CustomAcrylicInAppLuminosity" BackgroundSource="Backdrop"
+            TintOpacity="0"  TintColor="#55909090" FallbackColor="#55909090" />
+        <media2:BackdropBlurBrush x:Key="CustomBackdropBlurBrush" Amount="10"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MaxWidth="800" MinWidth="400"/>
@@ -23,16 +31,16 @@
                 <controls:FlyContent  x:Name="leftContentMask" IsAutoVisible="True" IsAutoControlScale="False" ShowDuration="0:0:0.3" HideDuration="0:0:0.3">
                     <Grid >
                         <Image x:Name="leftContentImage" Stretch="Fill"/>
-                        <Rectangle Fill="{ThemeResource AcrylicInAppFillColorDefaultBrush}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                        <Rectangle Fill="{ThemeResource CustomAcrylicInAppLuminosity}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                     </Grid>
                 </controls:FlyContent>
             </Grid>
 
         </Border>
 
-        <Border x:Name="sliderContainer" Width="12" Background="{ThemeResource ScrollBarPanningBorderThemeBrush}"
+        <Border x:Name="sliderContainer" Width="14" Background="{ThemeResource ScrollBarPanningBorderThemeBrush}"
                 Grid.Column="1" BorderBrush="LightGray" BorderThickness="0"  Grid.RowSpan="2">
-            <Border x:Name="slider"  Height="60" Width="7" CornerRadius="8" Opacity="0.7"  Background="{ThemeResource ButtonForegroundThemeBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+            <Border x:Name="slider"  Height="60" Width="10" CornerRadius="8" Opacity="0.7"  Background="{ThemeResource ButtonForegroundThemeBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" 
                     ManipulationMode="TranslateX" ManipulationDelta="slider_ManipulationDelta" ManipulationStarted="slider_ManipulationStarted" ManipulationCompleted="slider_ManipulationCompleted"/>
 
         </Border>
@@ -44,7 +52,7 @@
                 <controls:FlyContent HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="rightContentMask" IsAutoVisible="True" IsAutoControlScale="False" ShowDuration="0:0:0.3" HideDuration="0:0:0.3">
                     <Grid >
                         <Image x:Name="rightContentImage" Stretch="Fill"/>
-                        <Rectangle Fill="{ThemeResource AcrylicInAppFillColorDefaultBrush}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                        <Rectangle Fill="{ThemeResource CustomAcrylicInAppLuminosity}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                     </Grid>
                 </controls:FlyContent>
 

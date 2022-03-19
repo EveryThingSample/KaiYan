@@ -8,7 +8,7 @@
 
   <Identity
     Name="16580.jiema.UWP2"
-    Publisher="CN=61FB21AA-4073-48E1-979C-3D1A10A88955"
+    Publisher="CN=majie"
     Version="1.1.88.0" />
 
   <mp:PhoneIdentity PhoneProductId="a541b946-e444-40f2-b825-1136dce2281f" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>

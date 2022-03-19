@@ -11,6 +11,14 @@ namespace KaiYan.Core.API
     {
         public static Task<JObject> GetVideo(string url)
         {
+            if (url?.Contains("/category/") == true)
+            {
+                url = url.Replace("/category/", "//category/");
+            }
+            else if (url?.Contains("/categories/") == true)
+            {
+                url = url.Replace("/categories/", "//categories/");
+            }
             return GETAsync<JObject>(url);
         }
         public static Task<JObject> GetRelatedVideo(string id)
