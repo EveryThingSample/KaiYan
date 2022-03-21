@@ -381,9 +381,9 @@
                                 </Grid>
 
 
-                                <Border  Grid.Column="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="{x:Bind ImageHeight,Mode=OneWay}">
+                                <Border  Grid.Column="1" Width="{x:Bind HalfWidth,Mode=OneWay}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="{x:Bind ImageHeight,Mode=OneWay}">
 
-                                    <Grid Grid.Column="1" MinWidth="181" Width="{x:Bind HalfWidth,Mode=OneWay}" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Stretch" >
+                                    <Grid Grid.Column="1" MinWidth="151"  Margin="5" VerticalAlignment="Center" HorizontalAlignment="Stretch" >
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="Auto"/>

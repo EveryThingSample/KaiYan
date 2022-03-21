@@ -48,6 +48,7 @@ namespace KaiYan.Controls
             Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += MainContentControl_BackRequested;
             FullWindowHelper.Current.FullWindowEntered += Current_FullWindowEntered;
             FullWindowHelper.Current.FullWindowExisted += Current_FullWindowExisted;
+            mainContentFooter.SelectedIndex = 0;
         }
 
         private void Current_FullWindowExisted(object sender, object e)
@@ -104,35 +105,6 @@ namespace KaiYan.Controls
 
 
 
-        private void MainContentFooter_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-           
-            foreach(int i in e.AddedItems)
-            {
-                if (i >= 0)
-                {
-                    var frame = this.FindName("frame" + i) as Frame;
-                    frame.Visibility = Visibility.Visible;
-                }
-
-            }
-            foreach (int i in e.RemovedItems)
-            {
-                if (i >= 0)
-                {
-                    var frame = this.FindName("frame" + i) as Frame;
-                    frame.Visibility = Visibility.Collapsed;
-                }
-            }
-            if ((sender as MainContentFooter).SelectedIndex == 3)
-            {
-                if (!Account.IsLogin)
-                {
-                    SwipeControlShowPage(typeof(LoginPage));
-                    (sender as MainContentFooter).SelectedIndex = (int)e.RemovedItems.First();
-                }
-            }
-        }
 
         private long timeForBackRequested;
         private void MainContentControl_BackRequested(object sender, Windows.UI.Core.BackRequestedEventArgs e)
@@ -171,7 +143,19 @@ namespace KaiYan.Controls
                             tapList.SelectTapIndex(tabIndex - 1);
                         }
                     }
+                    else if (uri.LocalPath == "/community")
+                    {
+                        var tabIndexStr = uri.Query.Substring(uri.Query.IndexOf("tabIndex=") + 9);
+                        tabIndexStr = tabIndexStr.Substring(0, tabIndexStr.IndexOf("&"));
+                        int tabIndex = int.Parse(tabIndexStr);
+                        mainContentFooter.SelectedIndex = 2;
+                        if (frame2.Content is ITapList tapList)
+                        {
+                            tapList.SelectTapIndex(tabIndex);
+                        }
+                    }
                     break;
+
             }
         }
 
@@ -192,6 +176,37 @@ namespace KaiYan.Controls
         private void splitWindowControl_ChangSplitRatioCompleted(object sender, object e)
         {
             swipeControl.Unsuspend();
+        }
+
+        private void mainContentFooter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (var item in e.AddedItems)
+            {
+                int i = (sender as MainContentFooter).Items.IndexOf(item);
+                if (i >= 0)
+                {
+                    var frame = this.FindName("frame" + i) as Frame;
+                    frame.Visibility = Visibility.Visible;
+                }
+
+            }
+            foreach (var item in e.RemovedItems)
+            {
+                int i = (sender as MainContentFooter).Items.IndexOf(item);
+                if (i >= 0)
+                {
+                    var frame = this.FindName("frame" + i) as Frame;
+                    frame.Visibility = Visibility.Collapsed;
+                }
+            }
+            if ((sender as MainContentFooter).SelectedIndex == 3)
+            {
+                if (!Account.IsLogin)
+                {
+                    SwipeControlShowPage(typeof(LoginPage));
+                    (sender as MainContentFooter).SelectedIndex = (int)e.RemovedItems.First();
+                }
+            }
         }
     }
 }

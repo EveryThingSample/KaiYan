@@ -334,9 +334,9 @@
                                     </VisualState>
                                     <VisualState x:Name="PauseState">
                                         <VisualState.Setters>
+                                            <Setter Target="BottomTransportContentControl.IsOpen" Value="True"/>
                                             <Setter Target="PlayPauseSymbolLeft.Symbol" Value="Pause"/>
                                             <Setter Target="PlayPauseSymbol.Symbol" Value="Pause"/>
-                                            <Setter Target="BottomTransportContentControl.IsOpen" Value="True"/>
                                         </VisualState.Setters>
                                     </VisualState>
                                 </VisualStateGroup>

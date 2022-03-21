@@ -21,32 +21,16 @@
 
 
         <Grid Name="Root_Grid"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  HorizontalAlignment="Stretch" >
-            <Grid x:Name="Child_Grid">
+            <Grid x:Name="ItemsContainer_Grid" Margin="0,5,0,5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="Item_Tapped" DoubleTapped="Item_DoubleTapped" Margin="5" Background="Transparent">
-                    <TextBlock Text="推荐" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                </Border>
-                <Border  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Tapped="Item_Tapped" DoubleTapped="Item_DoubleTapped" Margin="5" Background="Transparent">
-                    <TextBlock Text="分类" HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                </Border>
-                <Border Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="Item_Tapped" DoubleTapped="Item_DoubleTapped" Margin="5" Background="Transparent">
-                    <TextBlock Text="社区" HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                </Border>
-                <Border Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="Item_Tapped" DoubleTapped="Item_DoubleTapped" Margin="5" Background="Transparent">
-                    <TextBlock Text="我的" HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                </Border>
             </Grid>
 
-            <Border x:Name="slider" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50" Height="5" 
-                RenderTransformOrigin="0.5,0.5"
+            <Border x:Name="slider"  VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="0" Height="5" 
+                RenderTransformOrigin="0,0" 
                 Background="{ThemeResource SystemAccentColor}" CornerRadius="5" Margin="0,0,0,5">
                 <Border.RenderTransform>
-                    <TranslateTransform x:Name="sliderTranslateTransform" X="27"/>
+                    <TranslateTransform x:Name="sliderTranslateTransform" X="0"/>
                 </Border.RenderTransform>
             </Border>
         </Grid>

@@ -23,7 +23,12 @@
                         <Frame x:Name="frame2" Visibility="Collapsed"/>
                         <Frame x:Name="frame3" Visibility="Collapsed"/>
                     </Grid>
-                    <controls1:MainContentFooter x:Name="mainContentFooter" Grid.Row="1"  SelectionChanged="MainContentFooter_SelectionChanged" SelectedIndex="0" DoubleSelected="mainContentFooter_DoubleSelected"/>
+                    <controls1:MainContentFooter x:Name="mainContentFooter" Grid.Row="1"  SelectionChanged="mainContentFooter_SelectionChanged" DoubleSelected="mainContentFooter_DoubleSelected">
+                        <TextBlock Text="推荐"/>
+                        <TextBlock Text="分类"/>
+                        <TextBlock Text="社区"/>
+                        <TextBlock Text="我的"/>
+                    </controls1:MainContentFooter>
                 </Grid>
             </controls1:SplitWindowControl.LeftContent>
             <controls1:SplitWindowControl.RightContent>
