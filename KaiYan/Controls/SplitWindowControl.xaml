@@ -17,19 +17,21 @@
     <UserControl.Resources>
         <Windows10FallCreatorsUpdate:AcrylicBrush x:Key="CustomAcrylicInAppLuminosity" BackgroundSource="Backdrop"
             TintOpacity="0"  TintColor="#55909090" FallbackColor="#55909090" />
-        <media2:BackdropBlurBrush x:Key="CustomBackdropBlurBrush" Amount="10"/>
     </UserControl.Resources>
-    <Grid>
+    <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" MaxWidth="800" MinWidth="400"/>
-            <ColumnDefinition x:Name="secondColumnDefinition" Width="Auto" />
+            <ColumnDefinition x:Name="firstColumnDefinition" Width="*" MinWidth="400" />
+            <ColumnDefinition x:Name="secondColumnDefinition" Width="14" />
             <ColumnDefinition x:Name="thirdColumnDefinition" Width="*" MinWidth="400" />
         </Grid.ColumnDefinitions>
-        <Border x:Name="LeftContentBorder">
+        <Border x:Name="LeftContentBorder" >
             <Grid>
-                <ContentPresenter x:Name="LeftContentContainer" Content="{x:Bind LeftContent,Mode=OneWay}"/>
-                <controls:FlyContent  x:Name="leftContentMask" IsAutoVisible="True" IsAutoControlScale="False" ShowDuration="0:0:0.3" HideDuration="0:0:0.3">
-                    <Grid >
+                <ContentPresenter x:Name="LeftContentContainer" Content="{x:Bind LeftContent,Mode=OneWay}" Background="Transparent">
+
+                </ContentPresenter>
+                <controls:FlyContent  x:Name="leftContentMask" IsAutoVisible="True" IsAutoControlScale="False" ShowDuration="0:0:0.3" HideDuration="0:0:0.3" >
+                    <Grid>
+                        <!--<Rectangle Opacity="{x:Bind leftContentImage.Opacity, Mode=OneWay}" Fill="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>-->
                         <Image x:Name="leftContentImage" Stretch="Fill"/>
                         <Rectangle Fill="{ThemeResource CustomAcrylicInAppLuminosity}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                     </Grid>
@@ -40,17 +42,23 @@
 
         <Border x:Name="sliderContainer" Width="14" Background="{ThemeResource ScrollBarPanningBorderThemeBrush}"
                 Grid.Column="1" BorderBrush="LightGray" BorderThickness="0"  Grid.RowSpan="2">
-            <Border x:Name="slider"  Height="60" Width="10" CornerRadius="8" Opacity="0.7"  Background="{ThemeResource ButtonForegroundThemeBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                    ManipulationMode="TranslateX" ManipulationDelta="slider_ManipulationDelta" ManipulationStarted="slider_ManipulationStarted" ManipulationCompleted="slider_ManipulationCompleted"/>
+            <Border VerticalAlignment="Center" HorizontalAlignment="Stretch"  Background="Transparent" ManipulationMode="TranslateX" ManipulationDelta="slider_ManipulationDelta" ManipulationStarted="slider_ManipulationStarted" ManipulationCompleted="slider_ManipulationCompleted">
+                <Border   Height="60" Width="6" CornerRadius="8" Opacity="0.7"  Background="{ThemeResource ButtonForegroundThemeBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                   />
+            </Border>
+
 
         </Border>
 
-        <Border x:Name="RightContentBorder" Grid.Column="2" SizeChanged="RightContentBorder_SizeChanged">
+        <Border x:Name="RightContentBorder" Grid.Column="2" >
             <Grid >
-                <ContentPresenter x:Name="RightContentContainer" Content="{x:Bind RightContent,Mode=OneWay}"/>
-             
-                <controls:FlyContent HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="rightContentMask" IsAutoVisible="True" IsAutoControlScale="False" ShowDuration="0:0:0.3" HideDuration="0:0:0.3">
-                    <Grid >
+                <ContentPresenter x:Name="RightContentContainer" Content="{x:Bind RightContent,Mode=OneWay}">
+
+                </ContentPresenter>
+
+                <controls:FlyContent HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="rightContentMask" IsAutoVisible="True" IsAutoControlScale="False" ShowDuration="0:0:0.3" HideDuration="0:0:0.3" >
+                    <Grid>
+                        <!--<Rectangle Opacity="{x:Bind rightContentImage.Opacity, Mode=OneWay}" Fill="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>-->
                         <Image x:Name="rightContentImage" Stretch="Fill"/>
                         <Rectangle Fill="{ThemeResource CustomAcrylicInAppLuminosity}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                     </Grid>
